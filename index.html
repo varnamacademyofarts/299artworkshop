@@ -226,8 +226,8 @@ $("#c-prev").onclick=()=>{view.m--;if(view.m<0){view.m=11;view.y--}render()};
 $("#c-next").onclick=()=>{view.m++;if(view.m>11){view.m=0;view.y++}render()};
 $("#bk-x").onclick=()=>D.close();
 D.addEventListener("click",e=>{if(e.target===D)D.close()});
-document.addEventListener("click",e=>{if(e.target.closest(".wa")){e.preventDefault();openBook()}});
-$("#bk-wa").addEventListener("click",e=>{if($("#bk-wa").getAttribute("aria-disabled")==="true"){e.preventDefault();return}if(typeof window.fbq==="function"){try{window.fbq("track","Lead")}catch(_){}}});
+document.addEventListener("click",e=>{const w=e.target.closest(".wa");if(w){e.preventDefault();if(typeof window.fbq==="function"){try{const loc=w.closest(".hero")?"hero":w.closest(".sticky")?"sticky_bar":w.closest("header")?"header":w.closest(".final")?"final_cta":((w.closest("section")||{}).id||"page");window.fbq("trackCustom","RegisterButtonClick",{button_text:w.textContent.trim(),location:loc})}catch(_){}}openBook()}});
+$("#bk-wa").addEventListener("click",e=>{if($("#bk-wa").getAttribute("aria-disabled")==="true"){e.preventDefault();return}if(typeof window.fbq==="function"){try{window.fbq("track","Lead",{content_name:"Book via WhatsApp",batch:batchText()})}catch(_){}}});
 function waUrl(){const m="Hello Varnam Academy of Arts, I am interested in joining the ₹"+CONFIG.fee+" Art Introductory Practical LIVE Workshop. My preferred batch is "+batchText()+". Please share the registration and payment details.";return "https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(m)}
 
 /* Hero sparkles */
