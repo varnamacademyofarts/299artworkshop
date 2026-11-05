@@ -77,6 +77,7 @@ dialog{border:0;border-radius:24px;padding:20px;width:min(520px,calc(100% - 24px
 .slots{display:grid;gap:8px;margin:8px 0 14px}.slots button{min-height:52px;border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;text-align:left;padding:8px 14px}
 .slots button.on{border-color:var(--pur);background:var(--pur);color:#fff}.slots button:disabled{opacity:.4;cursor:not-allowed}
 .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.lnk{color:var(--pur);font-weight:700}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lnk{color:#d9b8ff}}
 .sticky{display:none}
 @media(max-width:767px){body{padding-bottom:84px}.sticky{display:block;position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line);z-index:10}.sticky .btn{display:block;width:100%}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -139,8 +140,8 @@ fbq('track', 'PageView');
 <section id="register"><div class="wrap"><div class="card" style="text-align:center;max-width:720px;margin:0 auto"><h2>Start Your Art Journey Today!</h2>
 <div class="price grad" id="fee"></div>
 <ul class="hl" style="justify-content:center;text-align:left;max-width:360px;margin:0 auto 22px"><li>Practical learning sessions</li><li>Live interaction and guidance</li><li>Multiple batch options</li></ul>
-<a class="btn wa" href="#">Register on WhatsApp</a>
-<p style="margin:14px 0 0;font-size:14px;color:var(--mut)">Clicking opens WhatsApp. Your seat is reserved only after the academy shares details and confirms.</p></div></div></section>
+<a class="btn wa" href="#">Book Your Seat – ₹299</a>
+<p style="margin:14px 0 0;font-size:14px;color:var(--mut)">Pick your batch, then complete your booking. Your seat is reserved only after the academy confirms it.</p></div></div></section>
 
 <section class="alt" id="faq"><div class="wrap" style="max-width:760px"><h2>Frequently Asked Questions</h2><div id="faqs"></div></div></section>
 
@@ -155,7 +156,8 @@ fbq('track', 'PageView');
 <div class="slots" id="slots-wrap" aria-label="Time slots"></div>
 <p id="bk-sum" style="margin:0 0 12px;font-weight:600"></p>
 <a class="btn" id="bk-wa" href="#" target="_blank" rel="noopener" style="display:block" aria-disabled="true">Book via WhatsApp</a>
-<p style="margin:12px 0 0;font-size:13px;color:var(--mut)">Your batch is not confirmed until the academy confirms it on WhatsApp. No payment is taken on this page.</p></dialog>
+<div id="bk-after" hidden style="margin-top:12px;background:var(--alt);border-radius:14px;padding:12px 14px;font-size:15px"><b>Paid already?</b> Send your payment screenshot and batch on WhatsApp so we can confirm your seat.<br><a id="bk-paid" class="lnk" href="#" target="_blank" rel="noopener">Send payment details on WhatsApp</a></div>
+<p style="margin:12px 0 0;font-size:13px;color:var(--mut)"><a id="bk-msg" class="lnk" href="#" target="_blank" rel="noopener">Prefer to ask first? Message us on WhatsApp</a><br>Your seat is confirmed only after the academy verifies your booking on WhatsApp. No payment is taken on this page.</p></dialog>
 <div class="sticky"><button class="btn wa" type="button">Join Workshop – ₹299</button></div>
 
 <script>
@@ -163,6 +165,7 @@ fbq('track', 'PageView');
 const CONFIG={
   fee:299,
   whatsapp:"918939012988",
+  paymentLink:"https://rzp.io/rzp/299ArtWorkshop",             // paste your payment link (Razorpay, Cashfree, PhonePe, UPI page, etc.). Empty = booking goes to WhatsApp only
   seatsRemaining:10,            // managed manually; change and republish
   timezone:"Asia/Kolkata",      // IST = UTC+5:30, no daylight saving
   embedVideos:true,         // true = inline YouTube player; false = "Watch on YouTube" button
@@ -180,7 +183,7 @@ const SESSIONS=[
 ["📝","Teaching Plan and Career Basics","30 minutes",["Plan a beginner-level art class","Understand materials and basic costs","Explore art classes and workshop opportunities"],"Create a simple lesson plan."],
 ["🖼️","Artwork Display and Feedback","15 minutes",["Present your completed artwork","Understand feedback and learning outcomes","Discover possible next steps in art-teacher training"],"Present your finished piece."]];
 const WHO=[["🌱","Beginners who want to learn drawing and painting."],["🎭","Art enthusiasts who want to improve their practical skills."],["🏡","Homemakers interested in developing creative skills."],["💼","Working professionals looking to explore an art-related side opportunity."],["🍎","Aspiring art teachers who want to understand the basics of teaching art."],["🎉","People interested in conducting art classes or creative workshops."]];
-const FAQ=[["Is this workshop suitable for beginners?","Yes. The workshop introduces essential art techniques step by step and includes practical activities."],["What is the workshop fee?","The introductory workshop fee is ₹299."],["What will I learn?","You will be introduced to drawing, pencil shading, colour theory, Indian folk art, painting techniques and the basics of teaching art."],["What are the available batch timings?","Weekdays: Monday, Wednesday and Friday, 10 AM–1 PM or 6 PM–9 PM. Weekends: Saturday and Sunday, 10 AM–1 PM or 6 PM–9 PM. All times are IST."],["How can I register?","Click any Register Now button to contact Varnam Academy of Arts through WhatsApp and receive the registration and payment instructions."],["Will I learn how to become an art teacher?","The workshop introduces the fundamentals of teaching art and basic lesson planning. It is an introductory workshop, not a guarantee of employment or professional qualification."],["How do I watch the preview videos?","Play the embedded YouTube videos directly on this page."]];
+const FAQ=[["Is this workshop suitable for beginners?","Yes. The workshop introduces essential art techniques step by step and includes practical activities."],["What is the workshop fee?","The introductory workshop fee is ₹299."],["What will I learn?","You will be introduced to drawing, pencil shading, colour theory, Indian folk art, painting techniques and the basics of teaching art."],["What are the available batch timings?","Weekdays: Monday, Wednesday and Friday, 10 AM–1 PM or 6 PM–9 PM. Weekends: Saturday and Sunday, 10 AM–1 PM or 6 PM–9 PM. All times are IST."],["How can I register?","Click any Register Now button, choose your batch and complete the booking step shown. Our team will confirm your seat on WhatsApp."],["Will I learn how to become an art teacher?","The workshop introduces the fundamentals of teaching art and basic lesson planning. It is an introductory workshop, not a guarantee of employment or professional qualification."],["How do I watch the preview videos?","Play the embedded YouTube videos directly on this page."]];
 const $=s=>document.querySelector(s);
 
 /* Render content */
@@ -217,8 +220,10 @@ function render(){
   $("#slots-wrap").innerHTML=selTs===null?'<p style="margin:0;color:var(--mut)">Select a date to see time slots.</p>':Object.entries(CONFIG.slots).map(([k,s])=>`<button type="button" data-k="${k}"${slotOk(selTs,k)?"":" disabled"}${k===selSlot?' class="on"':""}>${s.label} · ${s.text} IST</button>`).join("");
   const ready=selTs!==null&&!!selSlot,a=$("#bk-wa");
   $("#bk-sum").textContent=ready?"Selected: "+batchText():"";
-  a.setAttribute("aria-disabled",ready?"false":"true");a.href=ready?waUrl():"#";
+  const pay=!!CONFIG.paymentLink;a.textContent=pay?"Pay ₹"+CONFIG.fee+" & Book Seat":"Book via WhatsApp";a.setAttribute("aria-disabled",ready?"false":"true");a.href=ready?(pay?CONFIG.paymentLink:waUrl()):"#";
+  $("#bk-msg").href=waUrl();$("#bk-msg").hidden=!pay;$("#bk-paid").href=paidUrl();
 }
+function paidUrl(){return "https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent("Hello Varnam Academy of Arts, I have made the ₹"+CONFIG.fee+" payment for the Art Introductory Practical Online Workshop. My preferred batch is "+batchText()+". I am sharing my payment screenshot for confirmation.")}
 function openBook(){if(!view){const s=new Date((target.ts||Date.now())+IST);view={y:s.getUTCFullYear(),m:s.getUTCMonth()}}render();if(!D.open)D.showModal()}
 $("#cal").addEventListener("click",e=>{const b=e.target.closest("button[data-ts]");if(b&&!b.disabled){selTs=+b.dataset.ts;selSlot=null;render()}});
 $("#slots-wrap").addEventListener("click",e=>{const b=e.target.closest("button[data-k]");if(b&&!b.disabled){selSlot=b.dataset.k;render()}});
@@ -227,7 +232,7 @@ $("#c-next").onclick=()=>{view.m++;if(view.m>11){view.m=0;view.y++}render()};
 $("#bk-x").onclick=()=>D.close();
 D.addEventListener("click",e=>{if(e.target===D)D.close()});
 document.addEventListener("click",e=>{const w=e.target.closest(".wa");if(w){e.preventDefault();if(typeof window.fbq==="function"){try{const loc=w.closest(".hero")?"hero":w.closest(".sticky")?"sticky_bar":w.closest("header")?"header":w.closest(".final")?"final_cta":((w.closest("section")||{}).id||"page");window.fbq("trackCustom","RegisterButtonClick",{button_text:w.textContent.trim(),location:loc})}catch(_){}}openBook()}});
-$("#bk-wa").addEventListener("click",e=>{if($("#bk-wa").getAttribute("aria-disabled")==="true"){e.preventDefault();return}if(typeof window.fbq==="function"){try{window.fbq("track","Lead",{content_name:"Book via WhatsApp",batch:batchText()})}catch(_){}}});
+$("#bk-wa").addEventListener("click",e=>{if($("#bk-wa").getAttribute("aria-disabled")==="true"){e.preventDefault();return}if(CONFIG.paymentLink)$("#bk-after").hidden=false;if(typeof window.fbq==="function"){try{CONFIG.paymentLink?window.fbq("track","InitiateCheckout",{value:CONFIG.fee,currency:"INR",content_name:batchText()}):window.fbq("track","Lead",{content_name:"Book via WhatsApp",batch:batchText()})}catch(_){}}});
 function waUrl(){const m="Hello Varnam Academy of Arts, I am interested in joining the ₹"+CONFIG.fee+" Art Introductory Practical LIVE Workshop. My preferred batch is "+batchText()+". Please share the registration and payment details.";return "https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(m)}
 
 /* Hero sparkles */
