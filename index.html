@@ -77,6 +77,7 @@ dialog{border:0;border-radius:24px;padding:20px;width:min(520px,calc(100% - 24px
 .slots{display:grid;gap:8px;margin:8px 0 14px}.slots button{min-height:52px;border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--fg);font:inherit;cursor:pointer;text-align:left;padding:8px 14px}
 .slots button.on{border-color:var(--pur);background:var(--pur);color:#fff}.slots button:disabled{opacity:.4;cursor:not-allowed}
 .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{background:var(--alt);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:15px;font-weight:600}
 .lnk{color:var(--pur);font-weight:700}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lnk{color:#d9b8ff}}
 .sticky{display:none}
 @media(max-width:767px){body{padding-bottom:84px}.sticky{display:block;position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line);z-index:10}.sticky .btn{display:block;width:100%}}
@@ -107,9 +108,9 @@ fbq('track', 'PageView');
 <span class="badge">LIVE PRACTICAL WORKSHOP</span>
 <div class="price grad">Only ₹299</div>
 <h1>Rs. 299 Art Introductory Practical Online Workshop</h1>
-<p style="font-size:15px;font-weight:600;color:#fde68a;margin:0 0 14px">Discover Your Artistic Talent &amp; Explore the World of Art Teaching!</p>
-<p>Join our practical LIVE art workshop to learn essential drawing, shading, colouring, folk art and painting techniques, while exploring how you can begin teaching art.</p>
-<ul class="hl"><li>Beginner-friendly practical sessions</li><li>Learn step by step</li><li>Live interaction and guidance</li><li>Explore art-teaching opportunities</li></ul>
+<p style="font-size:15px;font-weight:600;color:#fde68a;margin:0 0 14px">In one live workshop, draw and shade an object, make a colour wheel, paint a Madhubani peacock and create a floral artwork.</p>
+<p>Join our practical LIVE art workshop and learn drawing, shading, colour mixing, Madhubani folk art and painting. You will also learn, in practical terms, how to teach a simple 5-minute art lesson and plan a beginner class.</p>
+<ul class="hl"><li>Beginner-friendly practical sessions</li><li>Learn step by step</li><li>Live interaction and guidance</li><li>Learn to teach a 5-minute mini art lesson</li></ul>
 <div class="cta-row"><a class="btn wa" href="#">Register Now – ₹299</a><a class="btn ghost" href="#video1">Watch Workshop Preview</a></div>
 </div>
 </div></section>
@@ -119,7 +120,12 @@ fbq('track', 'PageView');
 <div class="timer" role="timer" aria-live="off"><div class="tbox"><b id="cd-d">--</b><span>Days</span></div><div class="tbox"><b id="cd-h">--</b><span>Hours</span></div><div class="tbox"><b id="cd-m">--</b><span>Mins</span></div><div class="tbox"><b id="cd-s">--</b><span>Secs</span></div></div>
 <p id="cd-label" style="margin:0;color:var(--mut)"></p>
 <div><span class="seats" id="seats"></span></div>
-<p style="margin:0">Choose your preferred batch and reserve your seat.</p>
+
+</div></section>
+
+<section class="alt2" id="schedule"><div class="wrap"><h2>Choose Your Convenient Batch</h2><p class="lead">All timings are in Indian Standard Time (IST).</p>
+<div class="grid" id="sched"></div>
+<p style="text-align:center;margin:22px 0 0;font-weight:600">Choose your preferred date and slot in the payment page.</p>
 </div></section>
 
 <section id="video1"><div class="wrap"><h2>Anyone Can Learn Art!</h2><p class="lead">Discover how simple, step-by-step guidance can help beginners start creating beautiful artwork.</p><div class="vid" data-video="0"></div></div></section>
@@ -127,10 +133,14 @@ fbq('track', 'PageView');
 <section class="alt2" id="learn"><div class="wrap"><h2>What Will You Learn in This Workshop?</h2><p class="lead">Our practical workshop introduces essential art techniques and the fundamentals of teaching art, with hands-on activities.</p><div class="grid" id="cards"></div></div></section>
 
 
-<section class="alt" id="schedule"><div class="wrap"><h2>Choose Your Convenient Batch</h2><p class="lead">All timings are in Indian Standard Time (IST).</p>
-<div class="grid" id="sched"></div>
-<div class="card sel"><h3>Ready to join?</h3><p style="color:var(--mut)">You will choose your preferred date and time on the secure payment page.</p><button class="btn wa" type="button">I’m Ready to Join</button></div>
-</div></section>
+
+<section id="how"><div class="wrap"><h2>How Booking Works</h2><p class="lead">Three simple steps.</p>
+<div class="grid">
+<div class="card"><h3 class="grad">1. Click Register</h3><p style="margin:0">Tap any Register button to open our secure Razorpay payment page.</p></div>
+<div class="card"><h3 class="grad">2. Pay ₹299 &amp; pick your slot</h3><p style="margin:0">Pay the ₹299 workshop fee and choose your preferred date and time on the same page.</p></div>
+<div class="card"><h3 class="grad">3. Get your joining details</h3><p style="margin:0">Once we receive your payment, we confirm your seat and send the joining details to you on WhatsApp.</p></div>
+</div>
+<p style="text-align:center;margin:24px 0 0"><button class="btn wa" type="button">I’m Ready to Join</button></p></div></section>
 
 <section id="who"><div class="wrap"><h2>Is This Workshop Right for You?</h2><p class="lead">Whatever your starting point, you are welcome here.</p>
 <div class="grid" id="whogrid"></div></div></section>
@@ -141,7 +151,7 @@ fbq('track', 'PageView');
 <div class="price grad" id="fee"></div>
 <ul class="hl" style="justify-content:center;text-align:left;max-width:360px;margin:0 auto 22px"><li>Practical learning sessions</li><li>Live interaction and guidance</li><li>Multiple batch options</li></ul>
 <a class="btn wa" href="#">Book Your Seat – ₹299</a>
-<p style="margin:14px 0 0;font-size:14px;color:var(--mut)">You will choose your date and time on the payment page. Your seat is reserved only after the academy confirms it.</p></div></div></section>
+<p style="margin:14px 0 0;font-size:14px;color:var(--mut)">Pay ₹299 and choose your date and time on the secure payment page. We confirm your seat and send joining details on WhatsApp once your payment is received.</p></div></div></section>
 
 <section class="alt" id="faq"><div class="wrap" style="max-width:760px"><h2>Frequently Asked Questions</h2><div id="faqs"></div></div></section>
 
@@ -162,7 +172,7 @@ const CONFIG={
   embedVideos:true,         // true = inline YouTube player; false = "Watch on YouTube" button
   youtubeIds:["trM01FO3rG0","YOUTUBE_VIDEO_ID_2","YOUTUBE_VIDEO_ID_3"],
   metaPixelId:"",               // leave empty until you have a verified Pixel ID; tracking is NOT active
-  days:{weekday:{label:"Weekdays",desc:"Mon, Wed &amp; Fri",dow:[1,3,5]},weekend:{label:"Weekends",desc:"Sat &amp; Sun",dow:[6,0]}},
+  batchDates:{start:"2026-11-01",end:"2026-11-30",skipDow:[2,4]}, // every date in this range except Tuesday(2) and Thursday(4); edit to add new months
   slots:{morning:{label:"Morning",text:"10:00 AM – 1:00 PM",h:10},evening:{label:"Evening",text:"6:00 PM – 9:00 PM",h:18}}
 };
 const SESSIONS=[
@@ -174,7 +184,7 @@ const SESSIONS=[
 ["📝","Teaching Plan and Career Basics","30 minutes",["Plan a beginner-level art class","Understand materials and basic costs","Explore art classes and workshop opportunities"],"Create a simple lesson plan."],
 ["🖼️","Artwork Display and Feedback","15 minutes",["Present your completed artwork","Understand feedback and learning outcomes","Discover possible next steps in art-teacher training"],"Present your finished piece."]];
 const WHO=[["🌱","Beginners who want to learn drawing and painting."],["🎭","Art enthusiasts who want to improve their practical skills."],["🏡","Homemakers interested in developing creative skills."],["💼","Working professionals looking to explore an art-related side opportunity."],["🍎","Aspiring art teachers who want to understand the basics of teaching art."],["🎉","People interested in conducting art classes or creative workshops."]];
-const FAQ=[["Is this workshop suitable for beginners?","Yes. The workshop introduces essential art techniques step by step and includes practical activities."],["What is the workshop fee?","The introductory workshop fee is ₹299."],["What will I learn?","You will be introduced to drawing, pencil shading, colour theory, Indian folk art, painting techniques and the basics of teaching art."],["What are the available batch timings?","Weekdays: Monday, Wednesday and Friday, 10 AM–1 PM or 6 PM–9 PM. Weekends: Saturday and Sunday, 10 AM–1 PM or 6 PM–9 PM. All times are IST."],["How can I register?","Click any Register Now button to open the secure payment page, choose your date and time, and pay ₹299. Our team will confirm your seat after verifying your payment."],["Will I learn how to become an art teacher?","The workshop introduces the fundamentals of teaching art and basic lesson planning. It is an introductory workshop, not a guarantee of employment or professional qualification."],["How do I watch the preview videos?","Play the embedded YouTube videos directly on this page."]];
+const FAQ=[["Is this workshop suitable for beginners?","Yes. The workshop introduces essential art techniques step by step and includes practical activities."],["What is the workshop fee?","The introductory workshop fee is ₹299."],["What will I learn?","You will be introduced to drawing, pencil shading, colour theory, Indian folk art, painting techniques and the basics of teaching art."],["What are the available batch timings?","Batches run every day in November except Tuesday and Thursday, either 10 AM–1 PM or 6 PM–9 PM IST. You choose your date and slot on the payment page."],["How can I register?","Click any Register button to open the secure payment page, pay ₹299 and choose your date and time. Once we receive your payment, we confirm your seat and send the joining details on WhatsApp."],["Will I learn how to become an art teacher?","The workshop introduces the fundamentals of teaching art and basic lesson planning. It is an introductory workshop, not a guarantee of employment or professional qualification."],["How do I watch the preview videos?","Play the embedded YouTube videos directly on this page."]];
 const $=s=>document.querySelector(s);
 
 /* Render content */
@@ -183,7 +193,6 @@ $("#whogrid").innerHTML=WHO.map(w=>`<div class="card who"><span aria-hidden="tru
 $("#faqs").innerHTML=FAQ.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("");
 $("#fee").textContent="Workshop fee: ₹"+CONFIG.fee;
 $("#seats").textContent=CONFIG.seatsRemaining+" seats remaining";
-$("#sched").innerHTML=Object.values(CONFIG.days).map(d=>`<div class="card sched"><h3>${d.label}</h3><p><b>${d.desc}</b></p>${Object.values(CONFIG.slots).map(s=>`<p style="margin:0 0 6px">${s.label}: <b>${s.text}</b></p>`).join("")}</div>`).join("");
 
 /* Videos */
 document.querySelectorAll(".vid").forEach(el=>{
@@ -211,20 +220,26 @@ try{const p=new URLSearchParams(location.search),u={};p.forEach((v,k)=>{if(/^utm
 
 /* Countdown to next batch, Asia/Kolkata (UTC+5:30) */
 const IST=330*60000;
-function nextBatch(){
-  const now=Date.now(),sh=new Date(now+IST);let best=null,label="";
-  for(let i=0;i<9;i++){
-    const t=new Date(Date.UTC(sh.getUTCFullYear(),sh.getUTCMonth(),sh.getUTCDate()+i));
-    const dow=t.getUTCDay();
-    for(const dk in CONFIG.days){if(!CONFIG.days[dk].dow.includes(dow))continue;
-      for(const sk in CONFIG.slots){const ts=t.getTime()+CONFIG.slots[sk].h*3600000-IST;
-        if(ts>now&&(best===null||ts<best)){best=ts;label=CONFIG.days[dk].label+" "+CONFIG.slots[sk].label}}}
+function batchDays(){
+  const o=[],c=CONFIG.batchDates,s=c.start.split("-").map(Number),e=c.end.split("-").map(Number);
+  for(let t=Date.UTC(s[0],s[1]-1,s[2]),t1=Date.UTC(e[0],e[1]-1,e[2]);t<=t1;t+=864e5){
+    if(c.skipDow.includes(new Date(t).getUTCDay()))continue;
+    if(Object.values(CONFIG.slots).some(k=>t+k.h*36e5-IST>Date.now()))o.push(t);
   }
+  return o;
+}
+function nextBatch(){
+  let best=null,label="";
+  batchDays().forEach(t=>{for(const k in CONFIG.slots){const ts=t+CONFIG.slots[k].h*36e5-IST;if(ts>Date.now()&&(best===null||ts<best)){best=ts;label=CONFIG.slots[k].label}}});
   return {ts:best,label};
 }
+function renderSched(){
+  $("#sched").innerHTML='<div class="card sched"><h3>Available Dates</h3><p style="margin:0">All days in November except Tuesdays and Thursdays.</p></div><div class="card sched"><h3>Time Slots (IST)</h3>'+Object.values(CONFIG.slots).map(s=>`<p style="margin:0 0 6px">${s.label}: <b>${s.text}</b></p>`).join("")+'</div>';
+}
+renderSched();
 let target=nextBatch();
 function tick(){
-  if(!target.ts||target.ts<=Date.now())target=nextBatch();
+  if(!target.ts||target.ts<=Date.now())target=nextBatch();if(!target.ts){$("#cd-label").textContent="New batch dates will be announced soon.";return}
   const d=Math.max(0,target.ts-Date.now()),p=n=>String(n).padStart(2,"0");
   $("#cd-d").textContent=p(Math.floor(d/864e5));$("#cd-h").textContent=p(Math.floor(d/36e5)%24);$("#cd-m").textContent=p(Math.floor(d/6e4)%60);$("#cd-s").textContent=p(Math.floor(d/1e3)%60);
   $("#cd-label").textContent="Next scheduled batch: "+target.label+" · "+new Date(target.ts).toLocaleString("en-IN",{timeZone:CONFIG.timezone,weekday:"short",day:"numeric",month:"short",hour:"numeric",minute:"2-digit"})+" IST";
